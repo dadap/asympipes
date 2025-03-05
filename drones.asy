@@ -69,4 +69,6 @@ void draw_drone_bottom(
 
     draw(shift(pos) * outline, p = c.pVisibleEdge);
     draw(shift(pos) * reflect((0,0), (0,1)) * outline, p = c.pVisibleEdge);
+    draw(shift(xpart(pos) - reed_seat_diameter / 2, ypart(pos)) * ((0, 0) -- (reed_seat_diameter, 0)), p = c.pLightEdge);
+    draw(shift(xpart(pos) - bore_diameter / 2, ypart(pos)) * ((0, length) -- (bore_diameter, length)), p = c.pLightEdge);
 }
