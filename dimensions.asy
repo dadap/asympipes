@@ -26,6 +26,16 @@ real mount_length = 22;
 real mount_thread_length = 15;
 real mount_thread_diameter = 22;
 
+real bass_drone_bottom_bore_diameter = 7.9375;
+real bass_drone_bottom_length = 300;
+real bass_drone_bottom_slide_length = 98;
+real bass_drone_bottom_slide_diameter = 17;
+real bass_drone_bottom_tenon_length = 35;
+real bass_drone_bottom_tenon_diameter = 18.5;
+real bass_drone_bottom_body_min_diameter = 22;
+real bass_drone_bottom_body_max_diameter = 27;
+real bass_drone_bottom_reed_seat_diameter = 10.5;
+
 real tenor_drone_bottom_bore_diameter = 7.9375;
 real tenor_drone_bottom_length = 230;
 real tenor_drone_bottom_slide_length = 77;
