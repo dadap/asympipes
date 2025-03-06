@@ -4,8 +4,16 @@ all: $(drawings)
 
 tenor.pdf bass.pdf:: drones.asy
 
+VIEW ?=
+
+ifeq ($(VIEW),)
+  VIEW_OPTION=
+else
+  VIEW_OPTION=V
+endif
+
 %.pdf: %.asy dimensions.asy
-	asy -Vf pdf $<
+	asy -$(VIEW_OPTION)f pdf $<
 
 clean:
 	$(RM) $(drawings)
