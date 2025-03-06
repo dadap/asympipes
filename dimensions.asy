@@ -45,3 +45,37 @@ real tenor_drone_bottom_tenon_diameter = 18.5;
 real tenor_drone_bottom_body_min_diameter = 21;
 real tenor_drone_bottom_body_max_diameter = 26;
 real tenor_drone_bottom_reed_seat_diameter = 10;
+
+/* Helper functions for converting measurements from mm to inches: the bore
+ * diameter measurements are all inch-based since the measurements I took on
+ * my pipes map more convincingly to round-ish fractional inch based figures
+ * than round-ish metric ones, and it was therefore more convenient to source
+ * suitably sized reamers from fractional inch measurements than metric. */
+
+pair fractional_inches(real mm)
+{
+    int denominator = 128;
+    int numerator = (int) (denominator * mm / 25.4);
+
+    while (numerator % 2 == 0) {
+        numerator = quotient(numerator, 2);
+        denominator = quotient(denominator, 2);
+    }
+
+    return (numerator, denominator);
+}
+
+string inch_label(real mm)
+{
+    pair inches = fractional_inches(mm);
+    int numerator = (int) inches.x;
+    int denominator = (int) inches.y;
+    string whole = "";
+    string part = string(numerator % denominator) + "/" + string(denominator);
+
+    if (numerator > denominator) {
+        whole = string(numerator # denominator) + " ";
+    }
+
+    return whole + part + " in.";
+}

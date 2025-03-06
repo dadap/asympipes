@@ -60,15 +60,26 @@ void draw_drone_bottom(
     real tenon_diameter,
     real body_min_diameter,
     real body_max_diameter,
-    real reed_seat_diameter
+    real reed_seat_diameter,
+    bool labels = true
 )
 {
     path outline = drone_bottom_outline(bore_diameter, length, slide_length,
         slide_diameter, tenon_length, tenon_diameter, body_min_diameter,
         body_max_diameter, reed_seat_diameter);
+    real bore_radius = bore_diameter / 2;
 
     draw(shift(pos) * outline, p = c.pVisibleEdge);
     draw(shift(pos) * reflect((0,0), (0,1)) * outline, p = c.pVisibleEdge);
     draw(shift(xpart(pos) - reed_seat_diameter / 2, ypart(pos)) * ((0, 0) -- (reed_seat_diameter, 0)), p = c.pLightEdge);
     draw(shift(xpart(pos) - bore_diameter / 2, ypart(pos)) * ((0, length) -- (bore_diameter, length)), p = c.pLightEdge);
+
+    if (labels) {
+        c.MeasureParallel(
+            L = inch_label(bore_diameter),
+            pFrom = (-bore_radius + pos.x, length + pos.y),
+            pTo = (bore_radius + pos.x, length + pos.y),
+            dblDistance = 5
+        );
+    }
 }
