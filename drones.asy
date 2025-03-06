@@ -68,6 +68,13 @@ void draw_drone_bottom(
         slide_diameter, tenon_length, tenon_diameter, body_min_diameter,
         body_max_diameter, reed_seat_diameter);
     real bore_radius = bore_diameter / 2;
+    real slide_radius = slide_diameter / 2;
+    real body_radius = body_max_diameter / 2;
+    real tenon_radius = tenon_diameter / 2;
+    real mount_no_thread_length = mount_length - mount_thread_length;
+    real upper_mount_thread_pos = length - slide_length - mount_no_thread_length;
+    real lower_mount_thread_pos = tenon_length + mount_no_thread_length;
+    real mount_thread_radius = mount_thread_diameter / 2;
 
     draw(shift(pos) * outline, p = c.pVisibleEdge);
     draw(shift(pos) * reflect((0,0), (0,1)) * outline, p = c.pVisibleEdge);
@@ -79,6 +86,62 @@ void draw_drone_bottom(
             L = inch_label(bore_diameter),
             pFrom = (-bore_radius + pos.x, length + pos.y),
             pTo = (bore_radius + pos.x, length + pos.y),
+            dblDistance = 5
+        );
+
+        c.MeasureParallel(
+            L = string(slide_diameter),
+            pFrom = (-slide_radius + pos.x, length + pos.y),
+            pTo = (slide_radius + pos.x, length + pos.y),
+            dblDistance = 25
+        );
+
+        c.MeasureParallel(
+            L = string(tenon_diameter),
+            pFrom = (-tenon_radius + pos.x, pos.y),
+            pTo = (tenon_radius + pos.x, pos.y),
+            dblDistance = -10
+        );
+
+        c.MeasureParallel(
+            L = string(mount_thread_diameter),
+            pFrom = (-mount_thread_radius + pos.x, pos.y),
+            pTo = (mount_thread_radius + pos.x, pos.y),
+            dblDistance = -20
+        );
+
+        c.MeasureParallel(
+            L = string(body_max_diameter),
+            pFrom = (-body_radius + pos.x, pos.y),
+            pTo = (body_radius + pos.x, pos.y),
+            dblDistance = -30
+        );
+
+        c.MeasureParallel(
+            L = string(slide_length + mount_no_thread_length),
+            pFrom = (body_radius + pos.x, length + pos.y),
+            pTo = (body_radius + pos.x, upper_mount_thread_pos + pos.y),
+            dblDistance = 5
+        );
+
+        c.MeasureParallel(
+            L = string(lower_mount_thread_pos),
+            pFrom = (body_radius + pos.x, lower_mount_thread_pos + pos.y),
+            pTo = (body_radius + pos.x, pos.y),
+            dblDistance = 5
+        );
+
+        c.MeasureParallel(
+            L = string(mount_thread_length),
+            pFrom = (body_radius + pos.x, lower_mount_thread_pos + mount_thread_length + pos.y),
+            pTo = (body_radius + pos.x, lower_mount_thread_pos + pos.y),
+            dblDistance = 5
+        );
+
+        c.MeasureParallel(
+            L = string(length),
+            pFrom = (-body_radius + pos.x, pos.y),
+            pTo = (-body_radius + pos.x, length + pos.y),
             dblDistance = 5
         );
     }
