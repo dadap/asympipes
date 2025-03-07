@@ -40,8 +40,8 @@ path drone_bottom_outline(
         (mount_thread_radius, tenon_length + mount_length) --
         (mount_thread_radius, tenon_length + mount_length - mount_thread_length) --
         (tenon_radius, tenon_length + mount_length - mount_thread_length) --
-        (tenon_radius, tenon_length) --
-        (tenon_radius - hemp_section_depth, tenon_length) --
+        (tenon_radius, tenon_length - hemp_stop_length) --
+        (tenon_radius - hemp_section_depth, tenon_length - hemp_stop_length) --
         (tenon_radius - hemp_section_depth, hemp_stop_length) --
         (tenon_radius, hemp_stop_length) --
         (tenon_radius, 0) --
