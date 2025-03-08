@@ -82,6 +82,17 @@ real tenor_drone_top_neck_diameter = 22;
 real tenor_drone_top_neck_length = 54;
 real tenor_drone_top_bell_diameter = 22;
 
+real bass_drone_middle_chamber_diameter = bass_drone_top_chamber_diameter;
+real bass_drone_middle_chamber_length = 101;
+real bass_drone_middle_bore_diameter = 11.1125;
+real bass_drone_middle_length = 297;
+real bass_drone_middle_ferrule_diameter = large_ferrule_diameter;
+real bass_drone_middle_shoulder_height = 106;
+real bass_drone_middle_shoulder_diameter = 37;
+real bass_drone_neck_diameter = 24;
+real bass_drone_middle_slide_length = 97;
+real bass_drone_middle_slide_diameter = bass_drone_bottom_slide_diameter;
+
 /* Helper functions for converting measurements from mm to inches: the bore
  * diameter measurements are all inch-based since the measurements I took on
  * my pipes map more convincingly to round-ish fractional inch based figures

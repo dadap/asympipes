@@ -14,6 +14,8 @@ draw_drone_bottom(
     bass_drone_bottom_reed_seat_diameter
 );
 
+draw_drone_middle((75,0));
+
 draw_drone_top(
     (150,0),
     bass_drone_top_chamber_diameter,

@@ -109,6 +109,36 @@ path drone_top_outline(
         cycle;
 }
 
+path drone_middle_outline()
+{
+    real chamber_radius = bass_drone_middle_chamber_diameter / 2;
+    real bore_radius = bass_drone_middle_bore_diameter / 2;
+    real slide_radius = bass_drone_middle_slide_diameter / 2;
+    real mount_thread_radius = mount_thread_diameter / 2;
+    real neck_radius = bass_drone_neck_diameter / 2;
+    real shoulder_radius = bass_drone_middle_shoulder_diameter / 2;
+    real ferrule_radius = bass_drone_middle_ferrule_diameter / 2;
+
+    return (chamber_radius, 0) --
+        (chamber_radius, bass_drone_middle_chamber_length) --
+        (bore_radius, bass_drone_middle_chamber_length) --
+        (bore_radius, bass_drone_middle_length) --
+        (slide_radius, bass_drone_middle_length) --
+        (slide_radius, bass_drone_middle_length - hemp_stop_length) --
+        (slide_radius - hemp_section_depth, bass_drone_middle_length - hemp_stop_length) --
+        (slide_radius - hemp_section_depth, bass_drone_middle_length - hemp_stop_length - hemp_section_length) --
+        (slide_radius, bass_drone_middle_length - hemp_stop_length - hemp_section_length) --
+        (slide_radius, bass_drone_middle_length - bass_drone_middle_slide_length - mount_length + mount_thread_length) --
+        (mount_thread_radius, bass_drone_middle_length - bass_drone_middle_slide_length - mount_length + mount_thread_length) --
+        (mount_thread_radius, bass_drone_middle_length - bass_drone_middle_slide_length - mount_length) --
+        (neck_radius, bass_drone_middle_length - bass_drone_middle_slide_length - mount_length){down} ..
+        (shoulder_radius, bass_drone_middle_shoulder_height) --
+        (ferrule_radius, ferrule_length) --
+        (ferrule_radius - ferrule_thickness, ferrule_length) --
+        (ferrule_radius - ferrule_thickness, 0) --
+        cycle;
+}
+
 sCAD c = sCAD.Create(0);
 
 void draw_drone_bottom(
@@ -236,4 +266,17 @@ void draw_drone_top(
 
     draw(shift(pos.x - chamber_radius, pos.y) * ((0, 0) -- (chamber_diameter, 0)), p = c.pLightEdge);
     draw(shift(pos.x, pos.y) * ((-top_cap_radius, length) -- (top_cap_radius, length)), p = c.pLightEdge);
+}
+
+void draw_drone_middle(pair pos)
+{
+    path outline = drone_middle_outline();
+    real chamber_radius = bass_drone_middle_chamber_diameter / 2;
+    real bore_radius = bass_drone_middle_bore_diameter / 2;
+
+    draw(shift(pos) * outline, p = c.pVisibleEdge);
+    draw(shift(pos) * reflect((0,0), (0,1)) * outline, p = c.pVisibleEdge);
+
+    draw(shift(pos.x - chamber_radius, pos.y) * ((0,0) -- (bass_drone_middle_chamber_diameter, 0)), p = c.pLightEdge);
+    draw(shift(pos.x - bore_radius, pos.y + bass_drone_middle_length) * ((0,0) -- (bass_drone_middle_bore_diameter, 0)), p = c.pLightEdge);
 }
