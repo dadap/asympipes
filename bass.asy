@@ -13,3 +13,19 @@ draw_drone_bottom(
     bass_drone_bottom_body_max_diameter,
     bass_drone_bottom_reed_seat_diameter
 );
+
+draw_drone_top(
+    (150,0),
+    bass_drone_top_chamber_diameter,
+	bass_drone_top_chamber_length,
+	bass_drone_top_bore_diameter,
+	bass_drone_top_length,
+	bass_drone_top_bell_top_diameter,
+	bass_drone_top_bell_top_length,
+	bass_drone_top_ferrule_diameter,
+	bass_drone_top_shoulder_height,
+	bass_drone_top_shoulder_diameter,
+	bass_drone_top_neck_diameter,
+	bass_drone_top_neck_length,
+    bass_drone_top_bell_diameter
+);

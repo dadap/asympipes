@@ -48,6 +48,67 @@ path drone_bottom_outline(
         cycle;
 }
 
+path drone_top_outline(
+    real chamber_diameter,
+	real chamber_length,
+	real bore_diameter,
+	real length,
+	real bell_top_diameter,
+	real bell_top_length,
+	real ferrule_diameter,
+	real shoulder_height,
+	real shoulder_diameter,
+	real neck_diameter,
+	real neck_length,
+    real bell_diameter
+)
+{
+    real chamber_radius = chamber_diameter / 2;
+    real bore_radius = bore_diameter / 2;
+    real bell_radius = bell_diameter / 2;
+    real bell_top_radius = bell_top_diameter / 2;
+    real cord_groove_cap_bottom = shoulder_height + neck_length;
+    real cord_groove_cap_top = cord_groove_cap_bottom +
+         drone_top_cord_groove_cap_height * 2 + drone_top_cord_groove_height;
+    real neck_radius = neck_diameter / 2;
+    real shoulder_radius = shoulder_diameter / 2;
+    real ferrule_radius = ferrule_diameter / 2;
+
+    return (chamber_radius, 0) --
+        (chamber_radius, chamber_length) --
+        (bore_radius, chamber_length) --
+        (bore_radius, length - drone_top_inner_cap_height - drone_top_bell_depth) ..
+        {up}(bell_radius, length - drone_top_outer_cap_height) ..
+        (bell_radius, length - drone_top_inner_cap_height) --
+        (bell_top_radius - drone_top_cap_band_width * 2, length - drone_top_inner_cap_height) --
+        (bell_top_radius - drone_top_cap_band_width * 2, length) --
+        (bell_top_radius - drone_top_cap_band_width, length) --
+        (bell_top_radius - drone_top_cap_band_width, length - drone_top_outer_cap_height) --
+        (bell_top_radius, length - drone_top_outer_cap_height) --
+        (bell_top_radius, length - bell_top_length){(-1,-1)} ..
+        (neck_radius, cord_groove_cap_top){up} --
+        (neck_radius + drone_top_cord_groove_depth - drone_top_cord_groove_cap_radius, cord_groove_cap_top) --
+        arc((neck_radius + drone_top_cord_groove_depth - drone_top_cord_groove_cap_radius,
+             cord_groove_cap_top - drone_top_cord_groove_cap_radius),
+            r = drone_top_cord_groove_cap_radius, angle1=90, angle2=0) --
+        (neck_radius + drone_top_cord_groove_depth, cord_groove_cap_top - drone_top_cord_groove_cap_radius) --
+        (neck_radius + drone_top_cord_groove_depth, cord_groove_cap_top - drone_top_cord_groove_cap_height) --
+        (neck_radius, cord_groove_cap_top - drone_top_cord_groove_cap_height) --
+        (neck_radius, cord_groove_cap_bottom + drone_top_cord_groove_cap_height) --
+        (neck_radius + drone_top_cord_groove_depth, cord_groove_cap_bottom + drone_top_cord_groove_cap_height) --
+        (neck_radius + drone_top_cord_groove_depth, cord_groove_cap_bottom + drone_top_cord_groove_cap_radius) --
+        arc((neck_radius + drone_top_cord_groove_depth - drone_top_cord_groove_cap_radius,
+             cord_groove_cap_bottom + drone_top_cord_groove_cap_radius),
+            r = drone_top_cord_groove_cap_radius, angle1=0, angle2=-90) --
+        (neck_radius + drone_top_cord_groove_depth - drone_top_cord_groove_cap_radius, cord_groove_cap_bottom) --
+        (neck_radius, cord_groove_cap_bottom){down} ..
+        (shoulder_radius, shoulder_height) --
+        (ferrule_radius, ferrule_length) --
+        (ferrule_radius - ferrule_thickness, ferrule_length) --
+        (ferrule_radius - ferrule_thickness, 0) --
+        cycle;
+}
+
 sCAD c = sCAD.Create(0);
 
 void draw_drone_bottom(
@@ -145,4 +206,34 @@ void draw_drone_bottom(
             dblDistance = 5
         );
     }
+}
+
+void draw_drone_top(
+    pair pos,
+    real chamber_diameter,
+	real chamber_length,
+	real bore_diameter,
+	real length,
+	real bell_top_diameter,
+	real bell_top_length,
+	real ferrule_diameter,
+	real shoulder_height,
+	real shoulder_diameter,
+	real neck_diameter,
+	real neck_length,
+    real bell_diameter
+)
+{
+    path outline = drone_top_outline(chamber_diameter, chamber_length, bore_diameter,
+        length, bell_top_diameter, bell_top_length, ferrule_diameter, shoulder_height,
+        shoulder_diameter, neck_diameter, neck_length, bell_diameter);
+    real chamber_radius = chamber_diameter / 2;
+    real bore_radius = bore_diameter / 2;
+    real top_cap_radius = bell_top_diameter / 2 - drone_top_cap_band_width;
+
+    draw(shift(pos) * outline, p = c.pVisibleEdge);
+    draw(shift(pos) * reflect((0,0), (0,1)) * outline, p = c.pVisibleEdge);
+
+    draw(shift(pos.x - chamber_radius, pos.y) * ((0, 0) -- (chamber_diameter, 0)), p = c.pLightEdge);
+    draw(shift(pos.x, pos.y) * ((-top_cap_radius, length) -- (top_cap_radius, length)), p = c.pLightEdge);
 }
