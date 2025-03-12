@@ -12,7 +12,7 @@ else
   VIEW_OPTION=V
 endif
 
-%.pdf: %.asy dimensions.asy
+%.pdf: %.asy dimensions.asy part.asy
 	asy -$(VIEW_OPTION)f pdf $<
 
 clean:
