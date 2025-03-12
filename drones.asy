@@ -171,5 +171,16 @@ Part drone_middle()
     d.bottom = bass_drone_middle_chamber_diameter;
     d.top = bass_drone_middle_bore_diameter;
 
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_chamber_diameter, -15, inches = true));
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_ferrule_diameter, -25));
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_shoulder_diameter, -35));
+    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_bore_diameter, 5, inches = true));
+    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_slide_diameter, 25));
+
+    d.ydims.push(Dimension(bass_drone_middle_bore_diameter / 2, 0, bass_drone_middle_chamber_length, 0));
+    d.ydims.push(Dimension(bass_drone_middle_shoulder_diameter / 2, ferrule_length, 0, 5));
+    d.ydims.push(Dimension(bass_drone_middle_shoulder_diameter / 2, bass_drone_middle_shoulder_height, ferrule_length, 5));
+    d.ydims.push(Dimension(bass_drone_middle_shoulder_diameter / 2, bass_drone_middle_length, bass_drone_middle_length - bass_drone_middle_slide_length - mount_length + mount_thread_length, 5));
+
     return d;
 }
