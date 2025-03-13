@@ -100,7 +100,7 @@ real bass_drone_middle_length = 297;
 real bass_drone_middle_ferrule_diameter = large_ferrule_diameter;
 real bass_drone_middle_shoulder_height = 106;
 real bass_drone_middle_shoulder_diameter = 37;
-real bass_drone_neck_diameter = 24;
+real bass_drone_middle_neck_diameter = 24;
 real bass_drone_middle_slide_length = 97;
 real bass_drone_middle_slide_diameter = bass_drone_bottom_slide_diameter;
 

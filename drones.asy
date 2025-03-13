@@ -158,7 +158,7 @@ Part drone_middle()
     d.addp(y = bass_drone_middle_length - bass_drone_middle_slide_length - mount_length + mount_thread_length, yabs = true);
     d.addp(x = mount_thread_diameter / 2, xabs = true);
     d.addp(y = -mount_thread_length);
-    d.addp(x = bass_drone_neck_diameter / 2, xabs = true);
+    d.addp(x = bass_drone_middle_neck_diameter / 2, xabs = true);
     d.addp(y = -1);
     d.tail().curve = true;
     d.addpabs(bass_drone_middle_shoulder_diameter / 2, y = bass_drone_middle_shoulder_height);
