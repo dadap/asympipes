@@ -34,7 +34,6 @@ real mount_cove_radius = 4.5;
 real mount_bead_radius = 3;
 real mount_bead_center_height = 6;
 real mount_bead_center_diameter = 28;
-real mount_diameter = 48;
 real mount_bead_inclination = 8;
 real mount_minimum_diameter = 26;
 
