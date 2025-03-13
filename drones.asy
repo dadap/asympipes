@@ -1,4 +1,3 @@
-import CAD;
 include "part.asy";
 
 Part drone_bottom(
