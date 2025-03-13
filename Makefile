@@ -1,8 +1,10 @@
-drawings=$(addsuffix .pdf,stocks tenor bass)
+drawings=$(addsuffix .pdf,stocks tenor bass misc)
 
 all: $(drawings)
 
 tenor.pdf bass.pdf:: drones.asy
+
+misc.pdf:: mount.asy
 
 VIEW ?=
 
