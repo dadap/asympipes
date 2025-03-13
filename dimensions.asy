@@ -103,3 +103,11 @@ real bass_drone_middle_shoulder_diameter = 37;
 real bass_drone_neck_diameter = 24;
 real bass_drone_middle_slide_length = 97;
 real bass_drone_middle_slide_diameter = bass_drone_bottom_slide_diameter;
+
+real blowpipe_bore_diameter = 9.525;
+real blowpipe_thread_diameter = 14.2875;
+real blowpipe_thread_length = 13;
+real blowpipe_tip_diameter = 19;
+real blowpipe_base_diameter = 26;
+real blowpipe_tenon_diameter = 18.5;
+real blowpipe_tenon_length = 28;

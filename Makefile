@@ -4,7 +4,7 @@ all: $(drawings)
 
 tenor.pdf bass.pdf:: drones.asy
 
-misc.pdf:: mount.asy
+misc.pdf:: mount.asy blowpipe.asy
 
 VIEW ?=
 
