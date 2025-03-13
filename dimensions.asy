@@ -44,7 +44,7 @@ real bass_drone_bottom_slide_diameter = 17;
 real bass_drone_bottom_tenon_length = 35;
 real bass_drone_bottom_tenon_diameter = 18.5;
 real bass_drone_bottom_body_min_diameter = 22;
-real bass_drone_bottom_body_max_diameter = 27;
+real bass_drone_bottom_body_max_diameter = mount_minimum_diameter;
 real bass_drone_bottom_reed_seat_diameter = 10.5;
 
 real tenor_drone_bottom_bore_diameter = 7.9375;
@@ -54,7 +54,7 @@ real tenor_drone_bottom_slide_diameter = 16;
 real tenor_drone_bottom_tenon_length = 28;
 real tenor_drone_bottom_tenon_diameter = 18.5;
 real tenor_drone_bottom_body_min_diameter = 21;
-real tenor_drone_bottom_body_max_diameter = 26;
+real tenor_drone_bottom_body_max_diameter = mount_minimum_diameter;
 real tenor_drone_bottom_reed_seat_diameter = 10;
 
 real drone_top_cap_band_width = 5;
@@ -99,7 +99,7 @@ real bass_drone_middle_length = 297;
 real bass_drone_middle_ferrule_diameter = large_ferrule_diameter;
 real bass_drone_middle_shoulder_height = 106;
 real bass_drone_middle_shoulder_diameter = 37;
-real bass_drone_middle_neck_diameter = 24;
+real bass_drone_middle_neck_diameter = mount_minimum_diameter;
 real bass_drone_middle_slide_length = 97;
 real bass_drone_middle_slide_diameter = bass_drone_bottom_slide_diameter;
 
@@ -107,6 +107,6 @@ real blowpipe_bore_diameter = 9.525;
 real blowpipe_thread_diameter = 14.2875;
 real blowpipe_thread_length = 13;
 real blowpipe_tip_diameter = 19;
-real blowpipe_base_diameter = 26;
+real blowpipe_base_diameter = mount_minimum_diameter;
 real blowpipe_tenon_diameter = 18.5;
 real blowpipe_tenon_length = 28;
