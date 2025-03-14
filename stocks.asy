@@ -1,4 +1,3 @@
-include "dimensions.asy";
 include "part.asy";
 
 Part stock(real length)
@@ -33,10 +32,3 @@ Part stock(real length)
 
     return s;
 }
-
-stock(bass_stock_length).draw((50, 20), all_labels = false);
-stock(tenor_stock_length).draw((105, 20), all_labels = false);
-stock(chanter_stock_length).draw((160, 20), all_labels = false);
-stock(blowpipe_stock_length).draw((215, 20), all_labels = true);
-
-makepaper(origin = (-5,-0), size = (letter_size.y, letter_size.x));
