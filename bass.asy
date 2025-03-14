@@ -29,3 +29,5 @@ drone_top(
 	bass_drone_top_neck_length,
     bass_drone_top_bell_diameter
 ).draw((150,0));
+
+makepaper(origin = (-27, -30), size = legal_size);

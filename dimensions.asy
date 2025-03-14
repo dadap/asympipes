@@ -110,3 +110,12 @@ real blowpipe_tip_diameter = 19;
 real blowpipe_base_diameter = mount_minimum_diameter;
 real blowpipe_tenon_diameter = 18.5;
 real blowpipe_tenon_length = 28;
+
+pair letter_size = (215.9, 279.4);
+pair legal_size = (215.9, 355.6);
+
+void makepaper(pair origin = (0,0), pair size = letter_size)
+{
+    clip(box(origin, shift(origin) * size));
+    fixedscaling(origin, shift(origin) * size);
+}

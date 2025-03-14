@@ -27,3 +27,5 @@ drone_top(
 	tenor_drone_top_neck_length,
     tenor_drone_top_bell_diameter
 ).draw((80,0));
+
+makepaper(origin = (-60,-25));
