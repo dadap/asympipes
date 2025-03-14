@@ -21,12 +21,12 @@ Part mount(
     m.arcp(mount_bead_radius, 90 - mount_bead_inclination, -90 - mount_bead_inclination);
     m.addpabs(mount_minimum_diameter / 2, 0);
 
-    m.length = Dimension(mount_diameter / 2, 0, mount_length, 5);
+    m.length = Dimension(mount_diameter / 2, 0, mount_length, 3);
     m.bottom = mount_thread_diameter;
     m.top = hole_diameter;
 
     m.xdims.push(Dimension.symmetrical(0, mount_thread_diameter, 2));
-    m.xdims.push(Dimension.symmetrical(mount_length, hole_diameter, 5));
+    m.xdims.push(Dimension.symmetrical(mount_length, hole_diameter, 3));
 
     return m;
 }

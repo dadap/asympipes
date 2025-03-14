@@ -32,16 +32,18 @@ struct Dimension {
         return Dimension(distance, -l / 2, l / 2, labeldistance, inches);
     }
 
-    string label()
+    Label label(real distance)
     {
     /* Format label in mm (default) or inches: the bore diameter measurements
      * are all inch-based since the measurements I took on my pipes map more
      * convincingly to round-ish fractional inch based figures than round-ish
      * metric ones, and it was therefore more convenient to source suitably
      * sized reamers from fractional inch measurements than metric. */
+        string s;
         real mm = abs(p2 - p1);
+        int dd = distance < 0 ? -5 : 0;
 
-        if (this.inches) {
+        if (inches) {
             int denominator = 128;
             int numerator = (int) (denominator * mm / 25.4);
             string whole = "";
@@ -58,10 +60,12 @@ struct Dimension {
 
             part = string(numerator % denominator) + "/" + string(denominator);
 
-            return whole + part + " in.";
+            s = whole + part + " in.";
+        } else {
+            s = string(mm);
         }
 
-        return string(mm);
+        return shift(inches ? (0,-9 + dd) : (0,-2 + dd)) * scale(.8) * Label(s);
     }
 };
 
@@ -150,32 +154,32 @@ struct Part {
 
         draw(shift(pos) * outline, p = c.pVisibleEdge);
         draw(shift(pos) * reflect((0,0),(0,1)) * outline, p = c.pVisibleEdge);
-        draw(shift(pos.x - this.bottom / 2, pos.y) * ((0,0) -- (this.bottom, 0)),
+        draw(shift(pos.x - bottom / 2, pos.y) * ((0,0) -- (bottom, 0)),
             p = c.pLightEdge);
-        draw(shift(pos.x - this.top / 2, pos.y + this.length.p2) * ((0,0) -- (this.top, 0)),
+        draw(shift(pos.x - top / 2, pos.y + length.p2) * ((0,0) -- (top, 0)),
             p = c.pLightEdge);
 
         if (length_label || all_labels) {
             c.MeasureParallel(
-                L = this.length.label(),
-                pFrom = shift(pos) * (-this.length.distance, this.length.p1),
-                pTo = shift(pos) * (-this.length.distance, this.length.p2),
-                dblDistance = this.length.labeldistance
+                L = length.label(length.labeldistance),
+                pFrom = shift(pos) * (-length.distance, length.p1),
+                pTo = shift(pos) * (-length.distance, length.p2),
+                dblDistance = length.labeldistance
             );
         }
 
         if (all_labels) {
-            for (Dimension d : this.xdims) {
+            for (Dimension d : xdims) {
                 c.MeasureParallel(
-                    L = d.label(),
+                    L = d.label(d.labeldistance),
                     pFrom = shift(pos) * (d.p1, d.distance),
                     pTo = shift(pos) * (d.p2, d.distance),
                     dblDistance = d.labeldistance
                 );
             }
-            for (Dimension d : this.ydims) {
+            for (Dimension d : ydims) {
                 c.MeasureParallel(
-                    L = d.label(),
+                    L = d.label(d.labeldistance),
                     pFrom = shift(pos) * (d.distance, d.p1),
                     pTo = shift(pos) * (d.distance, d.p2),
                     dblDistance = d.labeldistance

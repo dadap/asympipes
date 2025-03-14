@@ -24,7 +24,7 @@ Part blowpipe(
     b.addp(x = hemp_section_depth);
     b.addp(y = 0, yabs = true);
 
-    b.length = Dimension(blowpipe_base_diameter / 2, 0, length, 5);
+    b.length = Dimension(blowpipe_base_diameter / 2, 0, length, 3);
 
     return b;
 }

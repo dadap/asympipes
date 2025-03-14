@@ -18,15 +18,15 @@ Part stock(real length)
     s.addp(x = -stock_bottom_corner_radius);
     s.arcp(stock_bottom_corner_radius, 0, -90);
 
-    s.length = Dimension(stock_bottom_diameter / 2, 0, length, 5);
+    s.length = Dimension(stock_bottom_diameter / 2, 0, length, 3);
 
-    s.xdims.push(Dimension.symmetrical(0, stock_bore_diameter, 25));
-    s.xdims.push(Dimension.symmetrical(length, stock_top_diameter, 5));
-    s.xdims.push(Dimension.symmetrical(0, stock_bottom_diameter, -10));
+    s.xdims.push(Dimension.symmetrical(0, stock_bore_diameter, 10));
+    s.xdims.push(Dimension.symmetrical(length, stock_top_diameter, 2));
+    s.xdims.push(Dimension.symmetrical(0, stock_bottom_diameter, -5));
 
-    s.ydims.push(Dimension(stock_bottom_diameter / 2, 0, stock_notch_height, -10));
-    s.ydims.push(Dimension(stock_bottom_diameter / 2, s.points[8].pos.y, s.points[5].pos.y, -10));
-    s.ydims.push(Dimension(stock_bottom_diameter / 2, s.points[3].pos.y, s.points[1].pos.y, -10));
+    s.ydims.push(Dimension(stock_bottom_diameter / 2, stock_notch_height, 0, 3));
+    s.ydims.push(Dimension(stock_bottom_diameter / 2, s.points[5].pos.y, s.points[8].pos.y, 3));
+    s.ydims.push(Dimension(stock_bottom_diameter / 2, s.points[1].pos.y, s.points[3].pos.y, 3));
 
     s.bottom = stock_bore_diameter;
     s.top = stock_bore_diameter;

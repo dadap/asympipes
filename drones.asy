@@ -45,11 +45,11 @@ Part drone_bottom(
     d.bottom = reed_seat_diameter;
     d.top = bore_diameter;
 
-    d.xdims.push(Dimension.symmetrical(length, bore_diameter, 5, inches = true));
-    d.xdims.push(Dimension.symmetrical(length, slide_diameter, 25));
-    d.xdims.push(Dimension.symmetrical(0, tenon_diameter, -15));
-    d.xdims.push(Dimension.symmetrical(0, mount_thread_diameter, -25));
-    d.xdims.push(Dimension.symmetrical(0, body_max_diameter, -35));
+    d.xdims.push(Dimension.symmetrical(length, bore_diameter, 2, inches = true));
+    d.xdims.push(Dimension.symmetrical(length, slide_diameter, 10));
+    d.xdims.push(Dimension.symmetrical(0, tenon_diameter, -5));
+    d.xdims.push(Dimension.symmetrical(0, mount_thread_diameter, -10));
+    d.xdims.push(Dimension.symmetrical(0, body_max_diameter, -15));
 
     d.ydims.push(Dimension(body_max_diameter / 2, length, d.points[9].pos.y, 5));
     d.ydims.push(Dimension(body_max_diameter / 2, d.points[15].pos.y, d.points[16].pos.y, 5));
@@ -118,14 +118,14 @@ Part drone_top(
     d.bottom = chamber_diameter;
     d.top = bell_top_diameter - drone_top_cap_band_width * 2;
 
-    d.xdims.push(Dimension.symmetrical(0, chamber_diameter, -15, inches = true));
-    d.xdims.push(Dimension.symmetrical(0, ferrule_diameter, -25));
-    d.xdims.push(Dimension.symmetrical(0, shoulder_diameter, -35));
+    d.xdims.push(Dimension.symmetrical(0, chamber_diameter, -5, inches = true));
+    d.xdims.push(Dimension.symmetrical(0, ferrule_diameter, -10));
+    d.xdims.push(Dimension.symmetrical(0, shoulder_diameter, -15));
     d.xdims.push(Dimension.symmetrical(length - drone_top_bell_depth - drone_top_inner_cap_height, bore_diameter, 5, inches = true));
-    d.xdims.push(Dimension.symmetrical(length, bell_diameter, 5));
-    d.xdims.push(Dimension.symmetrical(length, bell_top_diameter, 25));
-    d.xdims.push(Dimension(length, bell_top_diameter / 2 - drone_top_cap_band_width * 2, bell_top_diameter / 2 - drone_top_cap_band_width, 5));
-    d.xdims.push(Dimension(length, bell_top_diameter / 2 - drone_top_cap_band_width, bell_top_diameter / 2, 5));
+    d.xdims.push(Dimension.symmetrical(length, bell_diameter, 2));
+    d.xdims.push(Dimension.symmetrical(length, bell_top_diameter, 10));
+    d.xdims.push(Dimension(length, bell_top_diameter / 2 - drone_top_cap_band_width * 2, bell_top_diameter / 2 - drone_top_cap_band_width, 2));
+    d.xdims.push(Dimension(length, bell_top_diameter / 2 - drone_top_cap_band_width, bell_top_diameter / 2, 2));
     d.xdims.push(Dimension.symmetrical(cord_groove_cap_top, neck_diameter + drone_top_cord_groove_depth * 2, 5));
     d.xdims.push(Dimension.symmetrical(cord_groove_cap_bottom + drone_top_cord_groove_cap_height, neck_diameter, 3));
 
@@ -170,11 +170,11 @@ Part drone_middle()
     d.bottom = bass_drone_middle_chamber_diameter;
     d.top = bass_drone_middle_bore_diameter;
 
-    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_chamber_diameter, -15, inches = true));
-    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_ferrule_diameter, -25));
-    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_shoulder_diameter, -35));
-    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_bore_diameter, 5, inches = true));
-    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_slide_diameter, 25));
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_chamber_diameter, -5, inches = true));
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_ferrule_diameter, -10));
+    d.xdims.push(Dimension.symmetrical(0, bass_drone_middle_shoulder_diameter, -15));
+    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_bore_diameter, 2, inches = true));
+    d.xdims.push(Dimension.symmetrical(bass_drone_middle_length, bass_drone_middle_slide_diameter, 10));
 
     d.ydims.push(Dimension(bass_drone_middle_bore_diameter / 2, 0, bass_drone_middle_chamber_length, 0));
     d.ydims.push(Dimension(bass_drone_middle_shoulder_diameter / 2, ferrule_length, 0, 5));
