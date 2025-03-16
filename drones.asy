@@ -183,3 +183,49 @@ Part drone_middle()
 
     return d;
 }
+
+Part drone_top_outer_cap(real diameter)
+{
+    Part c;
+
+    c.addpabs(diameter / 2, 0);
+    c.addp(x = -drone_top_cap_band_width);
+    c.addp(y = drone_top_outer_cap_height);
+    c.addp(x = drone_top_cap_band_width);
+
+    c.length = Dimension(diameter / 2, 0, drone_top_outer_cap_height, 3);
+    c.bottom = diameter - drone_top_cap_band_width * 2;
+    c.top = c.bottom;
+
+    c.xdims.push(Dimension.symmetrical(0, diameter, -5));
+    c.xdims.push(Dimension.symmetrical(drone_top_outer_cap_height, c.top, 2));
+
+    return c;
+}
+
+Part drone_top_inner_cap(real outer_cap_diameter, real bushing_diameter)
+{
+    Part c;
+    real diameter = outer_cap_diameter - drone_top_cap_band_width * 4;
+
+    c.addpabs(bushing_diameter / 2, 0);
+    c.addp(y = drone_top_inner_cap_height);
+    c.addp(x = drone_top_inner_cap_bead_radius);
+    c.arcp(drone_top_inner_cap_bead_radius, 180, 0);
+    c.addp(x = diameter / 2, xabs = true);
+    c.addp(y = 0, yabs = true);
+
+    c.length = Dimension(
+        diameter / 2, 0,
+        drone_top_inner_cap_height + drone_top_inner_cap_bead_radius, 3
+    );
+    c.bottom = bushing_diameter;
+    c.top = bushing_diameter + drone_top_inner_cap_bead_radius * 2;
+
+    c.xdims.push(Dimension.symmetrical(0, diameter, -5));
+    c.xdims.push(Dimension.symmetrical(drone_top_inner_cap_height, bushing_diameter, 3));
+
+    c.ydims.push(Dimension(diameter/2, drone_top_inner_cap_height, 0, 3));
+
+    return c;
+}

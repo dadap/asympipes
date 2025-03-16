@@ -60,6 +60,7 @@ real tenor_drone_bottom_reed_seat_diameter = 10;
 real drone_top_cap_band_width = 5;
 real drone_top_outer_cap_height = 11;
 real drone_top_inner_cap_height = 6;
+real drone_top_inner_cap_bead_radius = 1;
 real drone_top_bell_depth = 24;
 real drone_top_cord_groove_depth = 8;
 real drone_top_cord_groove_height = 7;
@@ -78,6 +79,7 @@ real bass_drone_top_shoulder_diameter = 36;
 real bass_drone_top_neck_diameter = 23;
 real bass_drone_top_neck_length = 116;
 real bass_drone_top_bell_diameter = 26;
+real bass_drone_top_bushing_diameter = 15.5;
 
 real tenor_drone_top_chamber_diameter = 17.4625;
 real tenor_drone_top_chamber_length = 84;
@@ -91,6 +93,7 @@ real tenor_drone_top_shoulder_diameter = 35;
 real tenor_drone_top_neck_diameter = 22;
 real tenor_drone_top_neck_length = 54;
 real tenor_drone_top_bell_diameter = 22;
+real tenor_drone_top_bushing_diameter = 14;
 
 real bass_drone_middle_chamber_diameter = bass_drone_top_chamber_diameter;
 real bass_drone_middle_chamber_length = 101;
