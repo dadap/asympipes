@@ -29,6 +29,14 @@ Part mount(
     m.xdims.push(Dimension.symmetrical(mount_length, hole_diameter, -5));
     m.xdims.push(Dimension.symmetrical(0, mount_thread_diameter, 2));
     m.xdims.push(Dimension.symmetrical(0, mount_minimum_diameter, -5));
+    m.xdims.push(Dimension.symmetrical(mount_length, mount_ring_diameter, 3));
+
+    m.ydims.push(Dimension(mount_bead_center_diameter / 2 + mount_bead_radius,
+        mount_bead_center_height + mount_bead_radius,
+        mount_bead_center_height - mount_bead_radius, 2));
+    m.ydims.push(Dimension(mount_bead_center_diameter / 2 + mount_bead_radius,
+        mount_bead_center_height - mount_bead_radius, 0, 2));
+    m.ydims.push(Dimension(mount_diameter / 2, mount_thread_length, 0, 3));
 
     return m;
 }
