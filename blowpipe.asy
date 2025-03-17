@@ -25,6 +25,13 @@ Part blowpipe(
     b.addp(y = 0, yabs = true);
 
     b.length = Dimension(blowpipe_base_diameter / 2, 0, length, 3);
+    b.top = blowpipe_bore_diameter;
+    b.bottom = blowpipe_bore_diameter;
+
+    b.xdims.push(Dimension.symmetrical(0, blowpipe_bore_diameter, 5, inches = true));
+    b.xdims.push(Dimension.symmetrical(length, blowpipe_thread_diameter, 3, inches = true));
+
+    b.ydims.push(Dimension(blowpipe_tip_diameter / 2, length, length - blowpipe_thread_length, 3));
 
     return b;
 }

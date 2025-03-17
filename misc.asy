@@ -10,7 +10,8 @@ label(Label("4x"), (165, 115));
 label(Label("2x"), (165, 150));
 label(Label("2x"), (165, 185));
 
-blowpipe(200).draw((220,0));
+blowpipe(200).draw((220,-5));
+label(rotate(90) * Label("See tenor bottom tenon for dimensions"), (236,31));
 
 stock(bass_stock_length).draw((0, 0), all_labels = false);
 stock(tenor_stock_length).draw((55, 0), all_labels = false);
