@@ -28,4 +28,6 @@ drone_top(
     tenor_drone_top_bell_diameter
 ).draw((80,0));
 
+label(Label("All parts on this page 2x"), (50, 225));
+
 makepaper(origin = (-60,-25));
