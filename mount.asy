@@ -24,9 +24,11 @@ Part mount(
     m.length = Dimension(mount_diameter / 2, 0, mount_length, 3);
     m.bottom = mount_thread_diameter;
     m.top = hole_diameter;
+    m.x0_alternate_length = true;
 
+    m.xdims.push(Dimension.symmetrical(mount_length, hole_diameter, -5));
     m.xdims.push(Dimension.symmetrical(0, mount_thread_diameter, 2));
-    m.xdims.push(Dimension.symmetrical(mount_length, hole_diameter, 3));
+    m.xdims.push(Dimension.symmetrical(0, mount_minimum_diameter, -5));
 
     return m;
 }

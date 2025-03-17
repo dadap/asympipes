@@ -3,8 +3,8 @@ include "blowpipe.asy";
 include "stocks.asy";
 include "drones.asy";
 
-mount(18.5).draw((165,100));
-mount(17).draw((165,135));
+mount(18.5).draw((165,100), all_labels = false);
+mount(17).draw((165,135), all_labels = false);
 mount(16).draw((165,170));
 label(Label("4x"), (165, 115));
 label(Label("2x"), (165, 150));

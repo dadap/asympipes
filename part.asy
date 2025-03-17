@@ -108,6 +108,7 @@ struct Part {
     Dimension length;
     real bottom;
     real top;
+    bool x0_alternate_length = false;
 
     Point tail()
     {
@@ -160,15 +161,33 @@ struct Part {
             p = c.pLightEdge);
 
         if (length_label || all_labels) {
-            c.MeasureParallel(
-                L = length.label(length.labeldistance),
-                pFrom = shift(pos) * (-length.distance, length.p1),
-                pTo = shift(pos) * (-length.distance, length.p2),
-                dblDistance = length.labeldistance
-            );
+            if (!all_labels && x0_alternate_length) {
+                c.MeasureParallel(
+                    L = xdims[0].label(xdims[0].labeldistance),
+                    pFrom = shift(pos) * (xdims[0].p1, xdims[0].distance),
+                    pTo = shift(pos) * (xdims[0].p2, xdims[0].distance),
+                    dblDistance = xdims[0].labeldistance
+                );
+            } else {
+                c.MeasureParallel(
+                    L = length.label(length.labeldistance),
+                    pFrom = shift(pos) * (-length.distance, length.p1),
+                    pTo = shift(pos) * (-length.distance, length.p2),
+                    dblDistance = length.labeldistance
+                );
+            }
         }
 
         if (all_labels) {
+            if (x0_alternate_length) {
+                c.MeasureParallel(
+                    L = length.label(length.labeldistance),
+                    pFrom = shift(pos) * (-length.distance, length.p1),
+                    pTo = shift(pos) * (-length.distance, length.p2),
+                    dblDistance = length.labeldistance
+                );
+            }
+
             for (Dimension d : xdims) {
                 c.MeasureParallel(
                     L = d.label(d.labeldistance),
